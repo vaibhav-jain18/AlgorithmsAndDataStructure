@@ -1,0 +1,29 @@
+ 
+C++ Code to List Files in Current Directory
+
+To list and display/print all the files present inside the current directory in C++ programming, use a pointer say dir of DIR and the pointer say pdir of dirent to open and read directory to print all the files present in the directory as shown here in the following program.
+
+Following C++ program ask to the user to press any key to list all the files present inside the current directory. Here all the files display along with serial number like (1=FirstFileName.extension, 2=SecondFileName.extension, 3=ThirdFileName.extension, etc) and it will be separated by comma:
+
+/* C++ Program - List Files in Current Directory */
+		
+#include<iostream.h>
+#include<conio.h>
+#include<dirent.h>
+void main()
+{
+	clrscr();
+	int done, i=1;
+	DIR *dir;
+	dirent *pdir;
+	cout<<"Press any key to list and view all the files in the current directory : \n";
+	getch();
+	dir=opendir(".");
+	while(pdir=readdir(dir))
+	{
+		cout<<i<<"="pdir->d_name<<", ";
+		i++;
+	}
+	closedir(dir);
+	getch();
+}
